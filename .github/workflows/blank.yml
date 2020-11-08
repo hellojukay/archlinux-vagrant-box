@@ -1,7 +1,7 @@
 name: download-archlinux
 on: push
 jobs:
-  date:
+  download:
     runs-on: ubuntu-latest
     steps:
       # Checkout the branch
@@ -20,4 +20,4 @@ jobs:
           # Stage the file, commit and push
           git add archlinux.box
           git commit -m "add archlinux.box"
-          git push origin master
+          git push origin main
