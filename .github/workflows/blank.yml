@@ -18,6 +18,8 @@ jobs:
       - name: commit
         run: |
           # Stage the file, commit and push
-          git add archlinux.box
-          git commit -m "add archlinux.box"
+          git lfs install
+          git lfs track archlinux.box
+          git add .
+]         git commit -m "add archlinux.box"
           git push origin main
