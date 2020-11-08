@@ -1,0 +1,23 @@
+name: download-archlinux
+on: push
+jobs:
+  date:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the branch
+      - name: checkout
+        uses: actions/checkout@v2-beta # use either @v2-beta or @master. Eventually there will be a @v2 tag.
+      - name: wget archlinux
+        run: |
+          wget  https://vagrantcloud.com/archlinux/boxes/archlinux/versions/20201102.8065/providers/virtualbox.box -O archlinux.box
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "hellojukay"
+          git config user.email "hellojukay@163.com"
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add archlinux.box
+          git commit -m "add archlinux.box"
+          git push origin master
